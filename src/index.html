@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko-KR">
-    <head>
-        <meta charset="UTF-8">
-        <title>For my brother! John</title>
-        <link rel="stylesheet" href="./app.css">
-    </head>
-    <body>
-        <h1>For my brother! John</h1>
-        <del>엘리제를</del><strong>형</strong>을 위하여!
-        <div id="drag-file">
-            <p>여기로 File을 Drag &amp; Drop 해서 사용!</p>
-        </div>
-        <script src="./app.js" defer></script>
-        <address>Copyright &copy; OSHx (odi)</address>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>형을 위하여!</title>
+    <link rel="stylesheet" href="./app.css">
+    <script src="./app.js" defer></script>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1 title="Für meinen Bruder John!">
+                <del><span>엘리제를</span></del>
+                <strong title="좐">형</strong>을 위하여!
+                <span>v1.0.0</span>
+            </h1>
+        </header>
+        <main>
+            <div id="drag-file">
+                <p>여기로 파일을 끌어와서 사용!</p>
+            </div>
+        </main>
+        <footer>
+            <address>UNLICENSED 2019 &copy; OSHx</address>
+        </footer>
+    </div>
+    <div id="message-queue"></div>
+</body>
+
 </html>

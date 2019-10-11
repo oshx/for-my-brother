@@ -1,3 +1,84 @@
+* {
+    margin : 0;
+    padding: 0;
+}
+
+body {
+    font-family: nanumbarungothic, malgun gothic, dotum, sans-serif;
+}
+
+html,
+body {
+    overflow: hidden;
+}
+
+#app {
+    position  : absolute;
+    top       : 0;
+    right     : 0;
+    bottom    : 0;
+    left      : 0;
+    overflow  : hidden;
+    min-width : 480px;
+    min-height: 320px;
+}
+
+#app header {
+    position   : absolute;
+    top        : 0;
+    right      : 0;
+    left       : 0;
+    height     : 50px;
+    cursor     : default;
+    user-select: none;
+}
+
+#app footer {
+    position   : absolute;
+    height     : 30px;
+    right      : 0;
+    bottom     : 0;
+    left       : 0;
+    cursor     : default;
+    user-select: none;
+    box-shadow : 0 0 5px rgba(0, 0, 0, .24);
+}
+
+#app main {
+    padding : 50px 0 30px;
+    overflow: auto;
+}
+
+#app header h1 {
+    padding: 7px 0;
+    font-size: 24px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+#app header del {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: italic;
+    color: #d00;
+}
+#app header h1 > span {
+    font-size: 14px;
+    font-weight: 400;
+}
+#app header del span {
+    color: #999;
+}
+
+#app footer address {
+    display: block;
+    padding: 6px 0;
+    font-style : normal;
+    font-size  : 12px;
+    line-height: 1.5;
+    text-align : center;
+}
+
 #drag-file {
     background-color: #369;
     color           : #fff;

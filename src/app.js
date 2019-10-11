@@ -1,17 +1,18 @@
 "use strict";
+(function ([View, Model]) {
+    const {
+        node,
+        chrome,
+        electron,
+    } = process.versions;
 
-const {
-    node,
-    chrome,
-    electron,
-} = process.versions;
+    console.log({ node, chrome, electron });
 
-const View = require("./view");
-const Model = require("./model");
+    View.bindEvent({
+        getFile: Model.getFileDispensor,
+    });
 
-console.log({ node, chrome, electron });
-
-
-View.bindEvent({
-    getFile: Model.getFileDispensor,
-});
+})([
+    require("./view"),
+    require("./model"),
+]);
