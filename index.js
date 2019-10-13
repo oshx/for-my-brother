@@ -11,11 +11,11 @@ function createWindow() {
         width: config.width,
         height: config.height,
         webPreferences: {
-            devTools: false,
+            // devTools: false,
             nodeIntegration: true,
         },
     })
-    win.setResizable(false);
+    // win.setResizable(false);
     win.loadURL(url.format({
         pathname: path.join(__dirname, "./src/index.html"),
         protocol: "file:",

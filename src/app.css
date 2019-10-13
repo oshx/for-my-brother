@@ -18,61 +18,65 @@ body {
     right     : 0;
     bottom    : 0;
     left      : 0;
-    overflow  : hidden;
+    overflow  : auto;
     min-width : 480px;
     min-height: 320px;
 }
 
+#app header,
+#app footer {
+    position        : fixed;
+    cursor          : default;
+    user-select     : none;
+    box-shadow      : 0 0 5px rgba(0, 0, 0, .24);
+    background-color: rgba(255, 255, 255, .75);
+    text-shadow     : 0 0 5px #fff, 0 0 2px #fff, 0 0 1px #fff;
+}
+
 #app header {
-    position   : absolute;
-    top        : 0;
-    right      : 0;
-    left       : 0;
-    height     : 50px;
-    cursor     : default;
-    user-select: none;
+    top   : 0;
+    right : 0;
+    left  : 0;
+    height: 50px;
 }
 
 #app footer {
-    position   : absolute;
-    height     : 30px;
-    right      : 0;
-    bottom     : 0;
-    left       : 0;
-    cursor     : default;
-    user-select: none;
-    box-shadow : 0 0 5px rgba(0, 0, 0, .24);
+    height: 30px;
+    right : 0;
+    bottom: 0;
+    left  : 0;
 }
 
 #app main {
-    padding : 50px 0 30px;
-    overflow: auto;
+    padding: 60px 10px 40px;
 }
 
 #app header h1 {
-    padding: 7px 0;
-    font-size: 24px;
+    padding    : 7px 0;
+    font-size  : 24px;
     line-height: 1.5;
-    text-align: center;
+    text-align : center;
 }
 
 #app header del {
-    font-size: 18px;
+    font-size  : 18px;
     font-weight: normal;
-    font-style: italic;
-    color: #d00;
+    font-style : italic;
+    color      : #d00;
 }
-#app header h1 > span {
-    font-size: 14px;
+
+#app header h1>span {
+    font-size  : 14px;
     font-weight: 400;
 }
+
 #app header del span {
     color: #999;
 }
 
 #app footer address {
-    display: block;
-    padding: 6px 0;
+    display    : block;
+    padding    : 6px 0;
     font-style : normal;
     font-size  : 12px;
     line-height: 1.5;
@@ -85,4 +89,34 @@ body {
     text-align      : center;
     width           : 250px;
     height          : 250px;
+}
+
+#html-console {
+    overflow        : auto;
+    max-width       : 100%;
+    white-space     : pre-line;
+    word-break      : break-all;
+    word-wrap       : break-word;
+    font-family     : Courier New, Courier, monospace, sans-serif;
+    font-size       : 14px;
+    line-height     : 1.6;
+    color           : #ccc;
+    background-color: #000;
+}
+
+#html-console>div {
+    margin    : 4px;
+    border-top: 1px dotted #ccc;
+}
+
+#html-console>div:first-child {
+    border-top-width: 0;
+}
+
+#html-console .info {
+    color: #0f0;
+}
+
+#html-console .warn {
+    color: #f00;
 }

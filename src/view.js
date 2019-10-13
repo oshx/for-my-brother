@@ -1,5 +1,6 @@
 const DRAG_FILE = document.querySelector("#drag-file");
 
+const { log } = require("./console");
 const handleToNull = () => false;
 
 const View = module.exports = {
@@ -10,7 +11,7 @@ const View = module.exports = {
             e.preventDefault();
             for (const f of e.dataTransfer.files) {
                 const { path } = f;
-                console.log('파일 들어 옴: ', path);
+                log({ "[View.handleDrop] 파일 인입": path });
                 getFile(path);
             }
             return false;
