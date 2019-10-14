@@ -4,7 +4,7 @@ const Regexp = require("./regexp");
 const { log, warn, explain } = require("./console");
 
 const Model = module.exports = {
-    _SPLIT: 100000,
+    _SPLIT: 65535,
     set split(v) {
         Model._SPLIT = v;
     },
@@ -39,9 +39,7 @@ const Model = module.exports = {
         try {
             explain("엑셀 파일 읽기 시도!");
             const workbook = XLSX.readFile(filePath);
-            log(`엑셀 파일 읽기 성공! 엑셀 파일은 작업할 필요 없잖아? 읽은 내용만 보여줌! 시트 ${workbook.SheetNames.length}개 찾음.`);
-            log(workbook);
-            console.log({ workbook });
+            log(`엑셀 파일 읽기 성공! 엑셀 파일은 작업할 필요 없는데? 시트 ${workbook.SheetNames.length}개 있는 XLSX임!`);
         } catch (e) {
             warn({ "엑셀 파일 읽기 실패!": e });
         }
@@ -55,15 +53,26 @@ const Model = module.exports = {
                 return await Model.getCommonFile(filePath, "\t");
         }
     },
-    parseLineData: async (data, delimiter) => {
-        data = await (data.split("\n"));
-        log({ "[Model.parseLineData]": `${data.length}행 찾음` });
-        data = await (data.map(v => v.split(delimiter)));
-        console.log({ data });
-    },
-    splitWorkbook: async (data) => {
-        log({ "[Model.splitWorkbook]": data.length });
-        console.log(data);
+    convertToXLSX: async (filePath, delimiter, data) => {
+        try {
+            data = await (data.split("\n"));
+            log({ "[Model.convertToXLSX]": `${data.length}행 찾음` });
+            data = await (data.map(v => v.split(delimiter)));
+            const workbook = XLSX.utils.book_new();
+            let i = 0;
+            for (const count = Math.ceil(data.length / Model.split); i < count; i++) {
+                let startIndex = i * Model.split;
+                let endIndex = (i + 1) * Model.split;
+                const sheet = XLSX.utils.aoa_to_sheet(data.slice(startIndex, endIndex));
+                console.log({ startIndex, endIndex, sheet });
+                XLSX.utils.book_append_sheet(workbook, sheet);
+            }
+            const fileName = filePath.substring(0, filePath.lastIndexOf("/")) + "/sliced.xlsx";
+            XLSX.writeFile(workbook, fileName);
+            log({ "[Model.convertToXLSX]": `${i}개의 시트를 가진 XLSX 생성 완료` });
+        } catch (e) {
+            error({ "[Model.convertToXLSX] 오류": e });
+        }
     },
     getCommonFile: async (filePath, delimiter) => {
         explain({ "[Model.getCommonFile]": filePath });
@@ -74,7 +83,7 @@ const Model = module.exports = {
                     return warn({ "일반 파일 읽는 도중에 오류 발생!": error });
                 }
                 log({ "파일 읽기 성공!": filePath });
-                return Model.parseLineData(data, delimiter);
+                return Model.convertToXLSX(filePath, delimiter, data);
             });
         } catch (e) {
             warn({ "파일 읽기 실패!": e });
