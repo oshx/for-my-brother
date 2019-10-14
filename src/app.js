@@ -7,11 +7,12 @@
         electron,
     } = process.versions;
 
-    explain("동작 환경");
     explain({
-        node,
-        chrome,
-        electron,
+        "동작 환경": {
+            node,
+            chrome,
+            electron,
+        },
     });
 
     View.bindEvent({

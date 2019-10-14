@@ -4,7 +4,8 @@
   "description": "형이 쓰길 바라는 도구",
   "main": "index.js",
   "scripts": {
-    "dev": "electron ./index.js"
+    "dev": "electron ./index.js",
+    "dummy": "node ./scratches/dummy.js"
   },
   "keywords": [
     "tsv",
