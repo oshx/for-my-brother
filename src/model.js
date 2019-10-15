@@ -2,6 +2,7 @@ const fs = require("fs");
 const XLSX = require("xlsx");
 const Regexp = require("./regexp");
 const { log, warn, explain, toast } = require("./console");
+const { replaceFileName } = require("./os-path");
 
 const Model = module.exports = {
     BUS: document.createElement("modelEventBus"),
@@ -81,8 +82,8 @@ const Model = module.exports = {
             log(`엑셀 파일 읽기 성공! 엑셀 파일은 작업할 필요 없는데? 시트 ${workbook.SheetNames.length}개 있는 XLSX임!`);
         } catch (e) {
             warn({ "엑셀 파일 읽기 실패!": e });
-            Model.setIdle();
         }
+        Model.setIdle();
     },
     getSeparatedVariables: async (filePath, ext) => {
         log({ "[Model.getSeparatedVariables]": filePath });
@@ -108,7 +109,7 @@ const Model = module.exports = {
                 console.log({ startIndex, endIndex, sheet });
                 XLSX.utils.book_append_sheet(workbook, sheet);
             }
-            const fileName = filePath.substring(0, filePath.lastIndexOf("/")) + "/" + Model.fileName + ".xlsx";
+            const fileName = replaceFileName(filePath, Model.fileName + ".xlsx");
             XLSX.writeFile(workbook, fileName);
             log({ "[Model.convertToXLSX]": `${i}개의 시트를 가진 [${Model.fileName}.xlsx] 저장` });
             Model.setIdle();

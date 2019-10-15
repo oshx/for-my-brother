@@ -2,10 +2,11 @@
   "name": "for-my-brother",
   "version": "1.0.0",
   "description": "형이 쓰길 바라는 도구",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "electron ./index.js",
-    "dummy": "node ./scratches/dummy.js"
+    "dev": "electron ./src/index.js",
+    "dummy": "node ./scratches/dummy.js",
+    "pack": "electron-builder --dir ./src"
   },
   "keywords": [
     "tsv",
@@ -15,7 +16,8 @@
   "author": "오승환<oshxios@gmail.com>",
   "license": "UNLICENSED",
   "devDependencies": {
-    "electron": "^6.0.12"
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0"
   },
   "dependencies": {
     "xlsx": "^0.15.1"
