@@ -15,9 +15,8 @@
         },
     });
 
-    View.bindEvent({
-        getFile: Model.getFileDispenser,
-    });
+    View.registModel(Model)
+        .bindEvent();
 
 })([
     require("./view"),
