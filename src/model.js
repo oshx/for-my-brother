@@ -71,7 +71,7 @@ const Model = module.exports = {
             XLSX.writeFile(workbook, fileName);
             log({ "[Model.convertToXLSX]": `${i}개의 시트를 가진 XLSX 생성 완료` });
         } catch (e) {
-            error({ "[Model.convertToXLSX] 오류": e });
+            warn({ "[Model.convertToXLSX] 오류": e });
         }
     },
     getCommonFile: async (filePath, delimiter) => {
