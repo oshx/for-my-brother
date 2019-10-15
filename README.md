@@ -8,4 +8,4 @@ v1.0.0
 1. 형은 Windows GUI만 쓴다.
 1. 나는 OS X 에서 GUI를 못 만든다.
 
-결론은 electron 짱짱맨
+결론은 electron 매우 좋음
