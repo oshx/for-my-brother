@@ -11,7 +11,7 @@
   "author": "오승환<oshxios@gmail.com>",
   "license": "UNLICENSED",
   "devDependencies": {
-    "electron": "^6.0.12",
+    "electron": "^9.1.0",
     "electron-builder": "^21.2.0"
   },
   "dependencies": {
